@@ -1,0 +1,196 @@
+package com.company;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        //write a method called checkNumber with an int parameter number
+
+        //The method should not return any value, and it needs print out:
+
+        // "positive" if the parameter number is >0
+        // "negative" if the parameter number is <0
+        // "Zero" if the parameter number is equal to 0
+
+        //NOTE: The checkNumber method needs to be defined as public static like we have been doing so far in the course.
+
+        checkNumber(3);
+
+        printMegaBytesAndKiloBytes(6000);
+
+        boolean Dog = bark(true, 0);
+
+        System.out.println(Dog);
+
+        boolean year = isLeapYear(1800);
+
+        System.out.println("What you entered is a " + year + " leap year");
+
+        boolean hey = areEqualByThreeDecimalPlaces(-3.176, -3.175);
+
+        System.out.println(hey);
+
+        boolean Whatup = hasEqualSum(1, 2, 4);
+
+        System.out.println(Whatup);
+
+
+    }
+
+    public static void checkNumber(int Number) {
+
+        if (Number > 0) {
+            System.out.println("positive");
+        } else if (Number < 0) {
+            System.out.println("negative");
+        } else if (Number == 0) {
+            System.out.println("Zero");
+        }
+    }
+
+    //write a method called printMegaBytesAndKiloBytes that has 1 parameter of type int with the name kiloBytes.
+    //The method should not return anything (void) and it needs to calculate the megabytes and remaining kilobytes
+    //from the kilobytes parameter
+    //
+    //Then it needs to print a message in the format "XX KB = YY MB and ZZ KB". XX represents the original value kiloBytes. YY
+    //represents the calculated megabytes. ZZ represents the calculated remaining kilobytes.
+    //
+    //if the parameter kiloBytes is <0 then print instead the text "Invalid value".
+    //
+    // . Example: printMegaBytesAndKiloBytes(2050) should print "2050 KB = 2 MB and 2 KB"
+    // . TIP: Be Careful about spaces in the printed message.
+    // . TIP: Use the remainder operator
+    // . TIP: 1 MB = 1024 KB
+
+    public static void printMegaBytesAndKiloBytes(int kiloBytes) {
+
+        int megaBytes = kiloBytes / 1024;
+        int RemainingKB = kiloBytes % 1024;
+        if (kiloBytes < 0) {
+            System.out.println("Invalid Value");
+        } else {
+            System.out.println(kiloBytes + " KB = " + megaBytes + " MB and " + RemainingKB + " KB");
+        }
+
+
+    }
+
+    //We have a dog that likes to bark, we need to wake up if the dog is barking at night
+    //Write a method bark that has 2 parameters
+    //1st parameter should be of type boolean and be named barking it represents if our dog is currently barking
+    //2nd parameter represents the hour of day and is of type int with the name hourOfDay and has a valid range of 0-23
+    //we have to wake up if the dog is barking before 08:00am or after 22:00 hours so in that case return true
+    // in all other cases return false. If the hourOfDay parameter is less than 0 or greater than 23 return false
+    //
+    //Examples of input/output:
+    // . bark(true,1) should return true
+    // . bark(false,2) should return false since the dog is not barking
+    // . bark(true,8) should return false, since its not before 8:00am
+    // . bark(true,-1) should return false because the hourOfDay parameter needs to be in range 0-23
+
+    public static boolean bark(boolean barking, int hourOfDay) {
+
+        if (barking && hourOfDay < 8 && hourOfDay >= 0 || barking && hourOfDay > 22 && hourOfDay < 24) {
+
+            return true;
+
+        } else {
+
+            return false;
+
+        }
+    }
+
+
+    //Write a method isLeapYear with a parameter of type int named year.
+    //The parameter needs to be greater than or equal to 1 and less than or equal to 9999
+    //If the parameter is not in that range return false
+    //Otherwise, if it is in the valid range, calculate if the year is a leap year and return true if it is, otherwise return false
+    //A year is a leap year if it is divisible by 4 but not by 100, or it is divisible by 400
+    //
+    //Examples of input/output
+    //isLeapYear(-1600) should return false since parameter is not in the range (1-9999)
+    //isLeapYear(1600) should return true since 1600 is leap year
+    //isLeapYear(2017) should return false since 2017 is not a leap year
+    //isLeapYear(2000) should return true because 2000 is a leap year
+
+
+    public static boolean isLeapYear(int Year) {
+
+
+        if ((Year >= 1 && Year <= 9999) && (Year % 4 == 0) && (Year % 400 == 0 || Year % 100 != 0)) {
+
+            return true;
+
+
+        } else {
+            return false;
+        }
+    }
+
+//Write a method areEqualByThreeDecimalPlaces with two parameters of type double
+//The method should return boolean and it needs to return true if two double numbers are the same up to three decimal place
+//otherwise return false.
+    //Examples of Input/Output
+    //areEqualByThreeDecimalPlaces(-3.1756, -3.1755) should return true since numbers are equal up to 3 decimal places
+    //areEqualByThreeDecimalPlaces(3.175, 3.176) should return false since numbers are not equal up to 3 decimal places
+    //areEqualByThreeDecimalPlaces(3.0,3.0) should return true since numbers are equal up to 3 decimal places
+
+    public static boolean areEqualByThreeDecimalPlaces(double AHH, double BOO) {
+
+        double aaa = AHH * 1000;  //to turn the double 4.44 to 44400.0404949 multiply by 1000
+        double bbb = BOO * 1000;  //so now 4.4467 == 4.446 will be 444400.040494940 and 44400.040495857758
+        // it will move the decimal places 3 places forward
+        double ccc = (int) aaa;    // but the numbers after the decimals will be different so in order to get rid of
+        double ddd = (int) bbb;       // those numbers you can cast the double as an integer and it will get rid of the numbers
+        // after the decimal. casting doubles and floats and integers will remove everything after
+        // the decimal
+        if (ccc == ddd) {                  //REMEMBER TO MULTIPLY BEFORE YOU CAST!!!!!!!!
+
+            return true;
+        } else {
+
+
+        }
+        return false;
+
+    }
+
+    //Write a method hasEqualSum with 3 parameters of type int
+    //The method should return boolean and it needs to return true if sum of first and second parameter is equal to third
+    //parameter. Otherwise return false
+    // Examples of input/output
+    //hasEqualSum(1,1,1) should return false since 1+1 is not equal to 1
+    //hasEqualSum(1,1,2) should return true since 1+1 is equal to 2
+    //hasEqualSum(1,-1,0) should return true since 1+(-1) is 1-1 and is equal to 0
+
+    public static boolean hasEqualSum(int A, int B, int C) {
+
+        if (A + B == C) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+
+//We'll say that a number is "teen" if it is in the range 13-19 (inclusive).
+//Write a method hasTeen with 3 parameters of type int
+//The method should return boolean and it needs to return true if one of parameters is in range 13(inclusive - 19(inclusive
+//Otherwise return false
+    //
+    //Examples of input/output
+    //hasTeen(9,99,19) should return true since 19 is in range 13-19
+    //hasTeen(23,15,42) should return true since 15 is in range 13-19
+    //hasTeen(22,23,34) should return false since 22,23,24 is not in range 13-19
+
+    public static boolean hasTeen(int A, int B, int C) {
+
+        if (A >= 13 && A<=19 || B >= 13 && B<=19 ||C >= 13 && C<=19 ) {
+
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
