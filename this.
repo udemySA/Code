@@ -1,0 +1,8 @@
+ public static int CalculateScore(int score) { //you can use the same method name by changing, adding or deleting at
+                                                 //least one parameter
+
+        System.out.println("Unnamed player scored " + score + " points");
+
+        return score * 1000;
+
+    }
