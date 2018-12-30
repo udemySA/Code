@@ -1,0 +1,63 @@
+package com.jademoreno;
+
+public class Main {
+
+    public static void main(String[] args) {
+        //areacalculator
+        //write a method named area with one double parameter named radius
+        //This method needs to return a double value that represents the area of a circle
+
+        //If the parameter radius is negative then return -1.0 to represent an invalid value
+
+        //write another overloaded method with 2 parameters x and y (both double), where x and y represent the sides of a rectangle
+        //the method needs to return an area of a rectangle
+
+        //if either or both parameters is/are negative return -1.0 to indicate an invalid value
+        //
+        //Examples of input/output
+        //area(5.0); should return 78.53975
+        //area(-1); should return -1 since the parameter is negative
+        //area(5.0, 4.0); should return 20.0 (5*4=20)
+        //area(-1.0, 4.0); should return -1 since first parameter is negative
+
+
+     double aw =   area(-1);
+
+       double wa = areaTwo(5.0, 4.0);
+
+        System.out.println(aw);
+        System.out.println(wa);
+
+    }
+
+    public static double area(double radius) {
+
+        double circleArea = 3.14159 * (radius * radius);
+
+        if (radius <= 0) {
+
+            return -1.0;
+
+        } else {
+
+
+            return circleArea;
+
+
+        }
+    }
+        public static double areaTwo(double sideOne, double sideTwo){
+
+            double rectangleArea = sideOne * sideTwo;
+
+            if (sideOne <= 0 || sideTwo <= 0) {
+
+                return -1.0;
+
+            } else {
+
+                return rectangleArea;
+            }
+
+        }
+    }
