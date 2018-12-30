@@ -1,0 +1,41 @@
+package com.jademoreno;
+
+public class Main {
+
+    public static void main(String[] args) {
+        //Minutes to years and days calculator
+        //write a method printYearsAndDays with parameter of type long named minutes
+        //The method should not return anything (void) and it needs to calculate the years and days from the minutes parameter
+        //if parameter is less than 0, print text "Invalid Value"
+        //Otherwise if parameter is valid then it needs to print a message in the format "XX min = YY y and ZZ d"
+        //XX represents the original value minutes. YY represents the calculated years. ZZ represents the calculated days.
+        //
+        //Examples of input/output
+        //printYearsAndDays(525600) should print "525600 min = 1 y and 0 d"
+        //printYearsAndDays(1051200) should print "1051200 min = 2 y and 0 d"
+        //printYearsAndDays(561600) should print "561600 min = 1 y and 25 d"
+        // minutes in a day = 1440 minutes in 1 day
+        // minutes in a year = 525600 minutes in a year
+
+        String printThis = printYearsAndDays(561600);
+        System.out.println(printThis);
+
+    }public static String printYearsAndDays(long minutes) {
+        long totalyears = minutes / 525600;
+        long totalRemainingYears = minutes % 525600;
+        long totaAgain = totalRemainingYears / 1440;
+
+
+
+        if (minutes < 0) {
+
+              return "Invalid Value";
+
+                }else {
+
+
+            } return minutes + " minutes = " + totalyears + " years " + totaAgain + " days";
+    }
+
+
+}
